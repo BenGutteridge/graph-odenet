@@ -33,9 +33,9 @@ model_vals = []
 for m in models:
   vals = []
   with open("{}_{}.txt".format(m,dataset)) as f:
-    for l in f:
-      if "Run" in l:
-        vals.append(float(l[-7:-2]))
+  for l in f:
+    if "Run" in l:
+    vals.append(float(l[-7:-2]))
   model_vals.append( np.array(vals) )
 
 colors = ["#6457a6","#664e4c","#9b8816","#8c271e","#002400","#000000",]
@@ -61,9 +61,9 @@ for m, v in zip(models,model_vals):
 
 for i in range(len(models)):
   for j in range(i+1,len(models)):
-    m1, v1 = models[i], model_vals[i]
-    m2, v2 = models[j], model_vals[j]
-    if m1!=m2:
-      print("{m1} x {m2}".format(m1=m1, m2=m2))
-      print("mannwhitneyu", sps.mannwhitneyu(v1,v2))
-      print("kruskal", sps.kruskal(v1,v2))
+  m1, v1 = models[i], model_vals[i]
+  m2, v2 = models[j], model_vals[j]
+  if m1!=m2:
+    print("{m1} x {m2}".format(m1=m1, m2=m2))
+    print("mannwhitneyu", sps.mannwhitneyu(v1,v2))
+    print("kruskal", sps.kruskal(v1,v2))
